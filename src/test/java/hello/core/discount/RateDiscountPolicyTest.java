@@ -25,7 +25,7 @@ class RateDiscountPolicyTest{
          assertThat(discount).isEqualTo(1000);
          // alt + 엔터로 스타틱 임포트 확인
     }
-    @Test
+    @Test // 실패테스트도 꼭 만들어 줘야한다.
     @DisplayName("VIP가 아니면 할인이 적용되지 않아야한다")
     void vip_x(){
         //given
@@ -35,6 +35,6 @@ class RateDiscountPolicyTest{
         int discount = discountPolicy.discount(member, 10000);
 
         // then
-        assertThat(discount).isEqualTo(1000);
+        assertThat(discount).isEqualTo(0);
     }
 }
