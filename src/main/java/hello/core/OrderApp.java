@@ -7,11 +7,23 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+//        OrderService orderService = appConfig.orderService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+
+
+        // MemberService memberService = new MemberServiceImpl(null);
+       // OrderService orderService = new OrderServiceImpl(null,null);
 
         Long memberId = 1l;
         Member member = new Member(memberId, "memberA", Gradle.VIP);
@@ -19,6 +31,6 @@ public class OrderApp {
         Order order = orderService.createOrder(memberId, "itemA", 10000);
 
         System.out.println("order= " + order);
-        System.out.println("order.calculatePrice = " + order.calculatePrice());
+        //System.out.println("order.calculatePrice = " + order.calculatePrice());
     }
 }

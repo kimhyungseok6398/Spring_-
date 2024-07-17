@@ -2,7 +2,12 @@ package hello.core.member;
 
 public class MemberServiceImpl implements MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }   // 생성자를 통해서 구현체가 무엇이 들어갈지 생성자를 통해 선택
+        // 이것이 생성자 주입 방식
     // 단축키 팁 = ctrn + shift + enter 하면
     // 자동으로 세미클론 까지 작성을 해준다.
 

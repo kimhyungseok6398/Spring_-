@@ -10,6 +10,8 @@ public class FixDiscountPolicy implements DiscountPolicy{
 
     @Override
     public int discount(Member member, int price) {
+        // 테스트 코드 자동 작성
+        // 컨트롤 + 시프트 + T
        if (member.getGradle() == Gradle.VIP){
             return discountFixAmount;
        }else {
