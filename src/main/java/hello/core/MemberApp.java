@@ -4,13 +4,18 @@ import hello.core.member.Gradle;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
 
         //MemberService memberService = new MemberServiceImpl();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        //스프링 컨테이너를 통해 찾아온다.
         Member member = new Member(1L, "memberA", Gradle.VIP);
         // 단축키 컨트롤 + alt + v  = 자동 변수 설정
 
