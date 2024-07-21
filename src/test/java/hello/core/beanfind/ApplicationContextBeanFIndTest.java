@@ -39,7 +39,7 @@ public class ApplicationContextBeanFIndTest {
         }
         System.out.println("beansOfType = " + beansOfType);
         assertThat(beansOfType.size()).isEqualTo(1);
-        // 추후 확인 테스트 에러뜨는 부분 빈 갯수? 확인 
+        // 추후 확인 테스트 에러뜨는 부분 빈 갯수? 확인
     }
 
     @Configuration // 스타틱을 썻기 때문에 안에서만 쓴다는 얘기
