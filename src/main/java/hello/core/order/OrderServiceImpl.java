@@ -6,7 +6,10 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan
 public class OrderServiceImpl implements OrderService{
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -18,6 +21,7 @@ public class OrderServiceImpl implements OrderService{
     // 이런식으로 인터페이스만 의존하도록 설계
     // DIP를 지키면서 설계!!
 
+    @Autowired //스프링이 생성시 자동으로 주입해주는역할
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -31,5 +35,9 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice,discountPrice);
 
+    }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
