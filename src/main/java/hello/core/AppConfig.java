@@ -30,12 +30,13 @@ public class AppConfig {
     }
 
     @Bean
-    public OrderService orderService(){
+    public OrderService orderService() {
         System.out.println("call AppConfig.memberRepository");
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
-
+        // return new OrderServiceImpl(memberRepository(), discountPolicy());
+       return null;
+    }
         // 단축키 컨트롤 + E 과거 히스토리 목록이 나온다.
-    }    //설계변경으로 MemberServiceImpl는 인터페이스만을 의존한다
+       //설계변경으로 MemberServiceImpl는 인터페이스만을 의존한다
     // MemberServiceImpl 의 생성자를 통해 어떤 구현 객체를 주입 할지는 오직 외부 (AppConfig)에 의해 결정 된다.
 
 

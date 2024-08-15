@@ -8,6 +8,8 @@ public interface DiscountPolicy {
      * @return 할인 대상 금액
      */
     int discount(Member member,int price);
+
+    int discount(Member member, int i, String fixDiscountPolicy);
     // 단축키 팁 f2를 누르면 오류난곳으로 이동
 
     }
